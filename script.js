@@ -26,3 +26,26 @@ document.addEventListener('keydown', function(event) {
         prevSlide();
     }
 });
+//VIDEO
+document.addEventListener('DOMContentLoaded', function () {
+    const video = document.getElementById('myVideo');
+    const slide = document.getElementById('slide5');
+  
+    // Crear una instancia de IntersectionObserver
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Reproducir el video si la diapositiva está en vista
+          video.play();
+        } else {
+          // Pausar el video si la diapositiva no está en vista
+          video.pause();
+          video.currentTime = 0; // Opcional: reiniciar el video al inicio
+        }
+      });
+    }, { threshold: 0.5 }); // Activar cuando al menos el 50% de la diapositiva esté en vista
+  
+    // Observar el elemento de la diapositiva
+    observer.observe(slide);
+  });
+  
